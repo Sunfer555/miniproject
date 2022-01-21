@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/custom.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-nav {
+            background: rgb(131,58,180);
+            background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+        }
+
+        .bg {
+            background-image: url('./bf82f6956a32819af48c2572243e8286.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <ul class="flex bg-nav">
+        <li class="p-4 text-white">
+            <h2 class="pattaya-font logo">ธนโชติ</h2>
+        </li>
+        <li class="p-4 text-white"><a href="./index.html">หน้าแรก</a></li>
+        <li class="p-4 text-white"><a class="active" href="./framework.html">ประวัติส่วนตัว (CSS
+                Framework)</a></li>
+        <li class="p-4  text-white"><a href="./form.html">ฟอร์ม (JS)</a></li>
+        <li class="p-4 bg-blue-300  text-white"><a href="./form2.html">ฟอร์ม (VueJs)</a></li>
+        <li class="p-4 text-white"><a href="https://www.facebook.com/profile.php?id=100007064524311">Facebook</a></li>
+    </ul>
+
+    <div class="h-screen relative bg">
+        <div style="z-index:1;" class="absolute bg-black w-full h-full opacity-25"></div>
+        <div class="flex flex-col justify-center items-center h-3/4  ">
+            <h1 class="text-3xl mt-2 text-white z-10">คำนวณ BMI</h1>
+            
+            <form @submit.prevent="calculate()" class="z-10 mt-4" >
+                <input v-model="weight" required class="rounded-full p-3 ml-2 " type="number" placeholder="weight" >
+                <input v-model="height" required  class="rounded-full p-3 ml-2 " type="number" placeholder="height" >
+                <button type="submit" class="rounded-full p-3 bg-red-600 text-white w-40 ml-2 " >คำนวณ</button>
+            </form>
+
+            <h3 class="text-2xl text-white z-10 mt-6">ค่า BMI : <span>{{result}}</span></h3>
+        </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+      new Vue({
+          el: '#app',
+          data: () => {
+              return ({
+                  weight: 0,
+                  height: 0,
+                  result: 0
+              });
+          },
+          methods: {
+              calculate() {
+
+                  this.result = Number(this.weight) / ((Number(this.height)/100) ** 2)
+                  alert(this.result);
+              }
+          }
+      })
+  </script>
+</body>
+</html>
